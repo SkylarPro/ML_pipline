@@ -1,0 +1,7 @@
+/data
+/src/models/__pycache__/
+/src/models/architecture/__pycache__/
+/src/utils/__pycache__/
+/src/utils/mixin/.ipynb_checkpoints/
+/src/utils/mixin/__pycache__/
+/src/pipeline/logs/
