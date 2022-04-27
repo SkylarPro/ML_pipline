@@ -1,4 +1,8 @@
+from typing import Dict
 class Args:
-    def __init__(self,cfg):
+    """
+    Parser args
+    """
+    def __init__(self,cfg:Dict):
         for k,v in cfg.items():
             setattr(self,k,v)
