@@ -1,5 +1,6 @@
 from collections.abc import MutableMapping
 from datetime import datetime
+from typing import Dict
     
 class AccumulativeDict(MutableMapping):
     def __init__(self, *args, **kwargs):
@@ -106,12 +107,18 @@ class AccumulativeDict(MutableMapping):
                 result[k] = self[k] / value
         return AccumulativeDict(result)
     
-def res_to_string(results, epoch, epoch_max):
+def res_to_string(results:Dict, epoch:int, epoch_max:int) -> str:
+    """
+    Converting Results to a String
+    """
     res_str = datetime.now().strftime('%Y-%m-%d %H:%M:%S') + f': Epoch {epoch}/{epoch_max},'
     for name, value in results.items():
         res_str+=f"{name}: {value:.5f};"
     return res_str
 
-def plot_params(log_data, writer, epoch):
+def plot_params(log_data:Dict, writer, epoch:int):
+    """
+    Logging results in tensorboard
+    """
     for name,value in log_data.items():
         writer.add_scalar(name, value, epoch)
