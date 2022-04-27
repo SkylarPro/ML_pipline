@@ -8,6 +8,7 @@ import os
 from functools import partial
 import torch
 from tqdm import tqdm
+from typing import Dict
 
 sys.path.append(os.getcwd())
 from src.utils.CustomDataset import DatasetCIFAR100
@@ -39,7 +40,7 @@ cfg_dataset = {
 }
 class Inference:
     
-    def __init__(self,config_inf = None, config_data = None, config_model = None):
+    def __init__(self,config_inf:Dict, config_data:Dict, config_model:Dict):
         config_inf.update(config_model)
         self.args = Args(config_inf)
         self.cfg_model = Args(config_model)
