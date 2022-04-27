@@ -4,8 +4,9 @@
 import torch
 from .architecture.models import ResNetUNet, AutoEncoder
 
+
 def load_model(cfg):
-    if cfg.name == "ResNetUnet": 
+    if cfg.name == "ResNetUnet":
         model = ResNetUNet(cfg)
         if hasattr(cfg, "weights_path"):
             print("Load weight in model...")
@@ -15,8 +16,8 @@ def load_model(cfg):
                 if name.find("cls_head") == -1:
                     param.requires_grad = False
                 else:
-                    param.requires_grad = True   
-    elif cfg.name == "AutoEncoder": 
+                    param.requires_grad = True
+    elif cfg.name == "AutoEncoder":
         model = AutoEncoder(cfg)
         if hasattr(cfg, "weights_path"):
             print("Load weight in model...")
@@ -28,4 +29,6 @@ def load_model(cfg):
                 else:
                     print(name)
                     param.requires_grad = True
+    else:
+        raise NotImplementedError
     return model
